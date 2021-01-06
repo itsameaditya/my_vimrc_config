@@ -17,18 +17,18 @@ filetype off
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
 "call vundle#begin('~/some/path/here')
 
-" let Vundle manage Vundle, required
+" <============================================>
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'itchyny/lightline.vim'
 Plugin 'patstockwell/vim-monokai-tasty'
-" <============================================>
-" Specify the plugins you want to install here.
+Plugin 'jiangmiao/auto-pairs'
 Plugin 'ycm-core/YouCompleteMe'
+Plugin 'vim-syntastic/syntastic'
 " <============================================>
-" All of your Plugins must be added before the following line
+
+
 call vundle#end()            " required
 filetype plugin indent on    " required
 " To ignore plugin indent changes, instead use:
@@ -40,16 +40,23 @@ filetype plugin indent on    " required
 " :PluginSearch foo - searches for foo; append `!` to refresh local cache
 " :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
 "
-" see :h vundle for more details or wiki for FAQ
+
 " Put your non-Plugin stuff after this line
 " Put the rest of your .vimrc file here
+
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
 
 let g:lightline = {
       \ 'colorscheme': 'monokai_tasty',
       \ }
 colorscheme vim-monokai-tasty
-
-let g:ycm_global_ycm_extra_conf = 'C:\Users\Aditya\.vim\bundle\YouCompleteMe\third_party\ycmd\cpp\ycm\.ycm_extra_conf.py'
 
 
 set nocompatible              " be iMproved, required
@@ -68,7 +75,7 @@ set ts=4
 set sw=4
 set si
 set guifont=Consolas:h16:cANSI
-cd D:\coding_programs\CP VIM
+cd D:\coding_programs\CP VIM "the location where your programs are stored
 
 imap jj <Esc>
 inoremap { {}<Left>
