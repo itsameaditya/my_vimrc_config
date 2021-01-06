@@ -2,6 +2,9 @@
 
 Simple vimrc config for competitive programming in c++
 
-Feel free to use and plz suggest new modifications if possible
+The perfect balance of aesthetics and useful plugins using vundle
 
-Enjoy!!
+Feel free to use and please suggest new modifications 
+
+
+Enjoy and keep coding :) !
