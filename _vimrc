@@ -25,7 +25,8 @@ Plugin 'itchyny/lightline.vim'
 Plugin 'patstockwell/vim-monokai-tasty'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'ycm-core/YouCompleteMe'
-Plugin 'vim-syntastic/syntastic'
+Plugin 'Elzair/vim-line-numbers'
+Plugin 'preservim/nerdtree'
 " <============================================>
 
 
@@ -43,6 +44,12 @@ filetype plugin indent on    " required
 
 " Put your non-Plugin stuff after this line
 " Put the rest of your .vimrc file here
+
+nnoremap <leader>n :NERDTreeFocus<CR>
+nnoremap <C-n> :NERDTree<CR>
+nnoremap <C-t> :NERDTreeToggle<CR>
+nnoremap <C-f> :NERDTreeFind<CR>
+
 
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
@@ -75,7 +82,7 @@ set ts=4
 set sw=4
 set si
 set guifont=Consolas:h16:cANSI
-cd D:\coding_programs\CP VIM "the location where your programs are stored
+cd D:\CP Vim "the location where your programs are stored
 
 imap jj <Esc>
 inoremap { {}<Left>
