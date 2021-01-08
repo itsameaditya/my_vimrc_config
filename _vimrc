@@ -81,7 +81,7 @@ set cb=unnamed
 set ts=4
 set sw=4
 set si
-set guifont=Consolas:h16:cANSI
+set guifont=Consolas:h15:cANSI
 cd D:\CP Vim "the location where your programs are stored
 
 imap jj <Esc>
