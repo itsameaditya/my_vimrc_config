@@ -52,6 +52,11 @@ filetype plugin indent on    " required
 " Put your non-Plugin stuff after this line
 " Put the rest of your .vimrc file here
 
+let g:formatterpath = ['C:\Users\Aditya\.vim\bundle\vim-clang-format']
+noremap <F3> :Autoformat<CR>
+au BufWrite * :Autoformat
+
+
 syntax enable
 set background=light
 colorscheme solarized
@@ -66,7 +71,6 @@ nnoremap <leader>n :NERDTreeFocus<CR>
 nnoremap <C-n> :NERDTree<CR>
 nnoremap <C-t> :NERDTreeToggle<CR>
 nnoremap <C-f> :NERDTreeFind<CR>
-
 
 
 set nocompatible              " be iMproved, required
