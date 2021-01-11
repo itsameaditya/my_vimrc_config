@@ -1,3 +1,4 @@
+
 let g:ycm_global_ycm_extra_conf = 'C:\Users\Aditya\.vim\bundle\YouCompleteMe\third_party\ycmd\cpp\ycm\.ycm_extra_conf.py'
 
 let g:ycm_show_diagnostics_ui = 1
@@ -21,12 +22,18 @@ call vundle#begin()
 
 " <============================================>
 Plugin 'VundleVim/Vundle.vim'
+
 Plugin 'itchyny/lightline.vim'
-Plugin 'patstockwell/vim-monokai-tasty'
+
 Plugin 'jiangmiao/auto-pairs'
-Plugin 'ycm-core/YouCompleteMe'
-Plugin 'Elzair/vim-line-numbers'
+
 Plugin 'preservim/nerdtree'
+
+Plugin 'Chiel92/vim-autoformat'
+
+Plugin 'rhysd/vim-clang-format'
+
+Plugin 'altercation/vim-colors-solarized'
 " <============================================>
 
 
@@ -45,25 +52,21 @@ filetype plugin indent on    " required
 " Put your non-Plugin stuff after this line
 " Put the rest of your .vimrc file here
 
+syntax enable
+set background=light
+colorscheme solarized
+
+if has('gui_running')
+    set background=light
+else
+    set background=dark
+endif
+
 nnoremap <leader>n :NERDTreeFocus<CR>
 nnoremap <C-n> :NERDTree<CR>
 nnoremap <C-t> :NERDTreeToggle<CR>
 nnoremap <C-f> :NERDTreeFind<CR>
 
-
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-
-let g:lightline = {
-      \ 'colorscheme': 'monokai_tasty',
-      \ }
-colorscheme vim-monokai-tasty
 
 
 set nocompatible              " be iMproved, required
