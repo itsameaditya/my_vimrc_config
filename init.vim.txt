@@ -72,13 +72,16 @@ set noswapfile " doesn't create swap files
 set noshowmode
 set shortmess+=c
 set omnifunc=syntaxcomplete#Complete
-set paste
+
+
+nnoremap <F2> :set invpaste paste?<CR>
+set pastetoggle=<F2>
+set showmode
 
 
 set backspace=indent,eol,start " let backspace delete over lines
 set autoindent " enable auto indentation of lines
 set smartindent " allow vim to best-effort guess the indentation
-set pastetoggle=<F2> " enable paste mode
 
 set wildmenu "graphical auto complete menu
 set lazyredraw "redraws the screne when it needs to

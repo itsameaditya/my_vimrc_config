@@ -1,12 +1,3 @@
-
-let g:ycm_global_ycm_extra_conf = 'C:\Users\Aditya\.vim\bundle\YouCompleteMe\third_party\ycmd\cpp\ycm\.ycm_extra_conf.py'
-
-let g:ycm_show_diagnostics_ui = 1
-let g:ycm_enable_diagnostic_signs = 0 
-let g:ycm_enable_diagnostic_highlighting = 0
-
-let g:ycm_allow_changing_updatetime = 0
-
 set laststatus=2
 set noshowmode
 
@@ -14,11 +5,11 @@ set encoding=utf-8
 
 set nocompatible              
 filetype off                  
+"<===================clears highlights==================>
+nnoremap <esc> :noh<return><esc>
 
-" set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
-"call vundle#begin('~/some/path/here')
 
 " <============================================>
 Plugin 'VundleVim/Vundle.vim'
@@ -33,7 +24,9 @@ Plugin 'Chiel92/vim-autoformat'
 
 Plugin 'rhysd/vim-clang-format'
 
-Plugin 'altercation/vim-colors-solarized'
+Plugin 'schmich/vim-guifont'
+
+Plugin 'sickill/vim-monokai'
 " <============================================>
 
 
@@ -41,55 +34,58 @@ call vundle#end()            " required
 filetype plugin indent on    " required
 " To ignore plugin indent changes, instead use:
 "filetype plugin on
-"
-" Brief help
-" :PluginList       - lists configured plugins
-" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
-" :PluginSearch foo - searches for foo; append `!` to refresh local cache
-" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
-"
 
-" Put your non-Plugin stuff after this line
-" Put the rest of your .vimrc file here
+
+"<=========vim autoformat============>
 
 let g:formatterpath = ['C:\Users\Aditya\.vim\bundle\vim-clang-format']
 noremap <F3> :Autoformat<CR>
 au BufWrite * :Autoformat
 
-
+"<============monokai theme ================>
 syntax enable
-set background=light
-colorscheme solarized
+colorscheme monokai
 
-if has('gui_running')
-    set background=light
-else
-    set background=dark
-endif
-
+"<==================nerdtree==========================>
 nnoremap <leader>n :NERDTreeFocus<CR>
 nnoremap <C-n> :NERDTree<CR>
 nnoremap <C-t> :NERDTreeToggle<CR>
 nnoremap <C-f> :NERDTreeFind<CR>
 
 
-set nocompatible              " be iMproved, required
-filetype off                  " required
+"<========================moves current line up or down ==============================>
+nnoremap <S-Up> :m-2<CR>
+nnoremap <S-Down> :m+<CR>
+inoremap <S-Up> <Esc>:m-2<CR>
+inoremap <S-Down> <Esc>:m+<CR>
+
+"<==========UI/UI===============================>
+set wildmenu "graphical auto complete menu
+set lazyredraw "redraws the screne when it needs to
+set showmatch "highlights matching brackets
+set incsearch "search as characters are entered
+set hlsearch "highlights matching searches
+
+
+
+set nocompatible            
+filetype off                 
 
 source $VIMRUNTIME/vimrc_example.vim
 
+"<====================remapping basic configs ==============================================>
 set clipboard=unnamed
-
 au GUIEnter * simalt ~x
 set hls
 set is
-set cb=unnamed
-"set gfn=Fixedsys:h15
 set ts=4
 set sw=4
 set si
-set guifont=Consolas:h15:cANSI
+set noswapfile
+set guifont=Consolas:h11:cANSI
 cd D:\CP Vim "the location where your programs are stored
+
+nnoremap <esc> :noh<return><esc>
 
 imap jj <Esc>
 inoremap { {}<Left>
@@ -97,11 +93,15 @@ inoremap {<CR> {<CR>}<Esc>O
 inoremap {{ {
 inoremap {} {}
 
+
+"<============================running c++ file===========================>
 autocmd filetype cpp nnoremap <f5> :w <bar> !g++ -std=c++17 -O2 -Wall % -o %:r && %:r.exe <cr>
 autocmd filetype cpp nnoremap <F9> :w <bar> !g++ -std=c++17 % -o %:r -Wl,--stack,268435456<CR>
 autocmd filetype cpp nnoremap <F10> :!%:r<CR>
 autocmd filetype cpp nnoremap <C-C> :s/^\(\s*\)/\1\/\/<CR> :s/^\(\s*\)\/\/\/\//\1<CR> $
 
+
+"<==============================do not touch this part===============================================>
 set nu
 augroup numbertoggle
     autocmd!
