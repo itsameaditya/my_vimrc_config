@@ -38,8 +38,7 @@ nnoremap <silent><RightMouse> :call GuiShowContextMenu()<CR>
 inoremap <silent><RightMouse> <Esc>:call GuiShowContextMenu()<CR>
 vnoremap <silent><RightMouse> :call GuiShowContextMenu()<CR>
 
-
-au BufNewFile,BufRead *.cpp
+au BufNewFile,BufRead *.py,*.java,*.cpp,*.c,*.cs,*.rkt,*.h,*.html
     \ set tabstop=4 |
     \ set softtabstop=4 |
     \ set shiftwidth=4 |
@@ -72,16 +71,14 @@ set noswapfile " doesn't create swap files
 set noshowmode
 set shortmess+=c
 set omnifunc=syntaxcomplete#Complete
+set nohlsearch "removes search highlights
 
-
-nnoremap <F2> :set invpaste paste?<CR>
-set pastetoggle=<F2>
-set showmode
 
 
 set backspace=indent,eol,start " let backspace delete over lines
 set autoindent " enable auto indentation of lines
 set smartindent " allow vim to best-effort guess the indentation
+set pastetoggle=<F2> " enable paste mode
 
 set wildmenu "graphical auto complete menu
 set lazyredraw "redraws the screne when it needs to
@@ -108,7 +105,7 @@ nnoremap <buffer> <localleader>w :set wrap!<cr>
 
 cd D:\CP Vim   "the location where your programs are stored
 
-imap jj <Esc>
+inoremap jj <Esc>
 inoremap { {}<Left>
 inoremap {<CR> {<CR>}<Esc>O
 inoremap {{ {
