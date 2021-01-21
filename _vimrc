@@ -20,10 +20,6 @@ Plugin 'jiangmiao/auto-pairs'
 
 Plugin 'preservim/nerdtree'
 
-Plugin 'Chiel92/vim-autoformat'
-
-Plugin 'rhysd/vim-clang-format'
-
 Plugin 'schmich/vim-guifont'
 
 Plugin 'sickill/vim-monokai'
@@ -34,13 +30,6 @@ call vundle#end()            " required
 filetype plugin indent on    " required
 " To ignore plugin indent changes, instead use:
 "filetype plugin on
-
-
-"<=========vim autoformat============>
-
-let g:formatterpath = ['C:\Users\Aditya\.vim\bundle\vim-clang-format']
-noremap <F3> :Autoformat<CR>
-au BufWrite * :Autoformat
 
 "<============monokai theme ================>
 syntax enable
@@ -98,8 +87,7 @@ inoremap {} {}
 autocmd filetype cpp nnoremap <f5> :w <bar> !g++ -std=c++17 -O2 -Wall % -o %:r && %:r.exe <cr>
 autocmd filetype cpp nnoremap <F9> :w <bar> !g++ -std=c++17 % -o %:r -Wl,--stack,268435456<CR>
 autocmd filetype cpp nnoremap <F10> :!%:r<CR>
-autocmd filetype cpp nnoremap <C-C> :s/^\(\s*\)/\1\/\/<CR> :s/^\(\s*\)\/\/\/\//\1<CR> $
-
+autocmd Filetype python nnoremap <buffer> <F6> :w<CR>:vert ter python3 "%"<CR>
 
 "<==============================do not touch this part===============================================>
 set nu
