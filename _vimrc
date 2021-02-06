@@ -23,6 +23,8 @@ Plugin 'preservim/nerdtree'
 Plugin 'schmich/vim-guifont'
 
 Plugin 'sickill/vim-monokai'
+
+Plugin '907th/vim-auto-save'
 " <============================================>
 
 
@@ -30,6 +32,11 @@ call vundle#end()            " required
 filetype plugin indent on    " required
 " To ignore plugin indent changes, instead use:
 "filetype plugin on
+
+"<============autosave in vim===================>
+" .vimrc
+let g:auto_save = 1  " enable AutoSave on Vim startup
+
 
 "<============monokai theme ================>
 syntax enable
