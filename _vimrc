@@ -1,6 +1,8 @@
 set laststatus=2
 set noshowmode
 
+:let mapleader = "\<Space>"
+
 set encoding=utf-8
 
 set nocompatible              
@@ -14,33 +16,23 @@ call vundle#begin()
 " <============================================>
 Plugin 'VundleVim/Vundle.vim'
 
-Plugin 'itchyny/lightline.vim'
-
 Plugin 'jiangmiao/auto-pairs'
 
 Plugin 'preservim/nerdtree'
 
-Plugin 'schmich/vim-guifont'
+Plugin 'ycm-core/YouCompleteMe'
 
-Plugin 'sickill/vim-monokai'
+Plugin 'drmikehenry/vim-fontsize'
 
-Plugin '907th/vim-auto-save'
 " <============================================>
 
 
 call vundle#end()            " required
 filetype plugin indent on    " required
-" To ignore plugin indent changes, instead use:
-"filetype plugin on
 
-"<============autosave in vim===================>
-" .vimrc
-let g:auto_save = 1  " enable AutoSave on Vim startup
+"<=============YCM==================>
+let g:ycm_show_diagnostics_ui = 0
 
-
-"<============monokai theme ================>
-syntax enable
-colorscheme monokai
 
 "<==================nerdtree==========================>
 nnoremap <leader>n :NERDTreeFocus<CR>
@@ -78,7 +70,7 @@ set ts=4
 set sw=4
 set si
 set noswapfile
-set guifont=Consolas:h11:cANSI
+set gfn=Fixedsys:h10
 cd D:\CP Vim "the location where your programs are stored
 
 nnoremap <esc> :noh<return><esc>
