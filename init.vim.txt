@@ -4,20 +4,16 @@ filetype off                  " required
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
-Plugin 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plugin 'junegunn/fzf.vim'
-Plugin 'sheerun/vim-polyglot'
 Plugin 'tpope/vim-surround'
 Plugin 'Raimondi/delimitMate'
 Plugin 'vim-airline/vim-airline'
-Plugin 'vim-syntastic/syntastic'
 Plugin 'ryanoasis/vim-devicons'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'rafi/awesome-vim-colorschemes'
 Plugin 'preservim/nerdcommenter'
 Plugin 'ervandew/supertab'
 Plugin '907th/vim-auto-save'
-
+Plugin 'vim-syntastic/syntastic'
 
 call vundle#end()   
 
@@ -25,8 +21,7 @@ filetype plugin on
 
 let mapleader = "-"
 let maplocalleader = "\\"
-
-cd D:\NEOVIMSFILES
+cd C:\CP Vim
 "autosave
 let g:auto_save_events = ["InsertLeave", "TextChanged"]
 let g:auto_save = 1 
@@ -205,6 +200,7 @@ command! -nargs=0 CompileAndRun call TermWrapper(printf('g++ -std=c++17 %s && a.
 command! -nargs=1 CompileAndRunWithFile call TermWrapper(printf('g++ -std=c++17 %s && a.exe < %s', expand('%'), <args>))
 autocmd FileType cpp nnoremap <F9> :CompileAndRunWithFile "input.txt"<CR>
 
+autocmd FileType cpp nnoremap <F10> :CompileAndRun<CR>
 " For those of you that like to use the default ./a.out
 " This C++ toolkit gives you commands to compile and/or run in different types
 " of terminals for your own preference.
