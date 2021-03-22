@@ -16,7 +16,7 @@ Plugin 'vim-airline/vim-airline-themes'
 Plugin 'rafi/awesome-vim-colorschemes'
 Plugin 'preservim/nerdcommenter'
 Plugin 'ervandew/supertab'
-Plugin 'ycm-core/YouCompleteMe'
+Plugin '907th/vim-auto-save'
 
 
 call vundle#end()   
@@ -26,7 +26,11 @@ filetype plugin on
 let mapleader = "-"
 let maplocalleader = "\\"
 
-cd D:\CP Vim
+cd D:\NEOVIMSFILES
+"autosave
+let g:auto_save_events = ["InsertLeave", "TextChanged"]
+let g:auto_save = 1 
+
 
 "split navigations
 nnoremap <C-J> <C-W><C-J>
@@ -157,12 +161,84 @@ let g:syntastic_cpp_compiler = 'clang++'
 let g:syntastic_cpp_compiler_options = ' -std=c++17'
 
 
+
+
+
+"<===========================================================================================================================================>
+
 " run code
-augroup compileandrun
-    autocmd!
-    autocmd filetype python nnoremap <f5> :w <bar> :!python3 % <cr>
-    autocmd filetype cpp nnoremap <f5> :w <bar> !g++ -std=c++17 % <cr> :vnew <bar> :te "a.exe" <cr><cr>
-    autocmd filetype cpp nnoremap <f6> :vnew <bar> :te "a.exe" <cr>
-    autocmd filetype c nnoremap <f5> :w <bar> !make %:r && ./%:r <cr>
-    autocmd filetype java nnoremap <f5> :w <bar> !javac % && java %:r <cr>
+" for detecting OS
+if !exists("g:os")
+    if has("win64") || has("win32") || has("win16")
+        let g:os = "Windows"
+    else
+        let g:os = substitute(system('uname'), '\n', '', '')
+    endif
+endif
+
+" important option that should already be set!
+set hidden
+
+" available options:
+" * g:split_term_style
+" * g:split_term_resize_cmd
+function! TermWrapper(command) abort
+	if !exists('g:split_term_style') | let g:split_term_style = 'vertical' | endif
+	if g:split_term_style ==# 'vertical'
+		let buffercmd = 'vnew'
+	elseif g:split_term_style ==# 'horizontal'
+		let buffercmd = 'new'
+	else
+		echoerr 'ERROR! g:split_term_style is not a valid value (must be ''horizontal'' or ''vertical'' but is currently set to ''' . g:split_term_style . ''')'
+		throw 'ERROR! g:split_term_style is not a valid value (must be ''horizontal'' or ''vertical'')'
+	endif
+	if exists('g:split_term_resize_cmd')
+		exec g:split_term_resize_cmd
+	endif
+	exec buffercmd
+	exec 'term ' . a:command
+	exec 'setlocal nornu nonu'
+	exec 'startinsert'
+endfunction
+
+command! -nargs=0 CompileAndRun call TermWrapper(printf('g++ -std=c++17 %s && a.exe', expand('%')))
+command! -nargs=1 CompileAndRunWithFile call TermWrapper(printf('g++ -std=c++17 %s && a.exe < %s', expand('%'), <args>))
+autocmd FileType cpp nnoremap <F9> :CompileAndRunWithFile "input.txt"<CR>
+
+" For those of you that like to use the default ./a.out
+" This C++ toolkit gives you commands to compile and/or run in different types
+" of terminals for your own preference.
+" NOTE: this version is more stable than the other version with specified
+" output executable!
+augroup CppToolkit
+	autocmd!
+	if g:os == 'Darwin'
+		autocmd FileType cpp nnoremap <leader>fn :!g++ -std=c++17 -o %:r % && open -a Terminal 'a.exe'<CR>
+	endif
+	autocmd FileType cpp nnoremap <leader>fb :!g++ -std=c++17 % && a.exe<CR>
+	autocmd FileType cpp nnoremap <leader>fr :!a.exe<CR>
+	autocmd FileType cpp nnoremap <leader>fw :CompileAndRun<CR>
 augroup END
+
+" For those of you that like to use -o and a specific outfile executable
+" (i.e., xyz.cpp makes executable xyz, as opposed to a.out
+" This C++ toolkit gives you commands to compile and/or run in different types
+" of terminals for your own preference.
+augroup CppToolkit
+	autocmd!
+	if g:os == 'Darwin'
+		autocmd FileType cpp nnoremap <leader>fn :!g++ -std=c++17 -o %:r % && open -a Terminal './%:r'<CR>
+	endif
+	autocmd FileType cpp nnoremap <leader>fb :!g++ -std=c++17 -o %:r % && ./%:r<CR>
+	autocmd FileType cpp nnoremap <leader>fr :!./%:r.out<CR>
+augroup END
+
+" options
+" choose between 'vertical' and 'horizontal' for how the terminal window is split
+" (default is vertical)
+let g:split_term_style = 'horizontal'
+
+" add a custom command to resize the terminal window to your preference
+" (default is to split the screen equally)
+let g:split_term_resize_cmd = 'resize 100'
+" (or let g:split_term_resize_cmd = 'vertical resize 40')
