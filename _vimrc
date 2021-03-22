@@ -1,4 +1,4 @@
-cd D:\CP Vim "the location where your programs are stored
+cd C:\CP Vim "the location where your programs are stored
 
 set laststatus=2
 set noshowmode
@@ -26,12 +26,18 @@ Plugin 'ycm-core/YouCompleteMe'
 
 Plugin 'drmikehenry/vim-fontsize'
 
+Plugin 'nanotech/jellybeans.vim'
+
+
 " <============================================>
 
 
 call vundle#end()            " required
 filetype plugin indent on    " required
 
+"<=============jellybeans=============>
+colorscheme jellybeans
+let g:jellybeans_use_lowcolor_black = 1
 "<=============YCM==================>
 let g:ycm_show_diagnostics_ui = 0
 
@@ -72,8 +78,18 @@ set ts=4
 set sw=4
 set si
 set noswapfile
-set gfn=Fixedsys:h10
-cd D:\CP Vim "the location where your programs are stored
+
+
+if has("gui_running")
+  if has("gui_gtk2")
+    set guifont=Inconsolata\ 12
+  elseif has("gui_macvim")
+    set guifont=Menlo\ Regular:h14
+  elseif has("gui_win32")
+    set guifont=Consolas:h11:cANSI
+  endif
+endif
+
 
 nnoremap <esc> :noh<return><esc>
 
