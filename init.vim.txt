@@ -13,34 +13,34 @@ Plugin 'rafi/awesome-vim-colorschemes'
 Plugin 'preservim/nerdcommenter'
 Plugin 'ervandew/supertab'
 Plugin '907th/vim-auto-save'
-Plugin 'vim-syntastic/syntastic'
+Plugin 'lifepillar/vim-solarized8'
 
 call vundle#end()   
 
 filetype plugin on
 
-let mapleader = "-"
-let maplocalleader = "\\"
+let mapleader = "\<Space>"
+"<<<====================This is where the programs are stored =======================>
 cd C:\CP Vim
+
 "autosave
 let g:auto_save_events = ["InsertLeave", "TextChanged"]
 let g:auto_save = 1 
 
+"<========================moves current line up or down ==============================>
+nnoremap <S-Up> :m-2<CR>
+nnoremap <S-Down> :m+<CR>
+inoremap <S-Up> <Esc>:m-2<CR>
+inoremap <S-Down> <Esc>:m+<CR>
 
-"split navigations
-nnoremap <C-J> <C-W><C-J>
-nnoremap <C-K> <C-W><C-K>
-nnoremap <C-L> <C-W><C-L>
-nnoremap <C-H> <C-W><C-H>
-
+"<<<<<<<<=======template for competitive coding ========================>
+nnoremap <leader>cc= :0r C:/CP Vim/template.cpp<CR> 
 
 inoremap jj <Esc>
 inoremap { {}<Left>
 inoremap {<CR> {<CR>}<Esc>O
 inoremap {{ {
 inoremap {} {}
-
-
 set splitbelow
 set splitright
 
@@ -49,9 +49,6 @@ set foldmethod=indent
 set foldlevel=99
 "Enable folding with the spacebar
 nnoremap <space> za
-
-" open files with ctrl-p
-nnoremap <c-p> :Files<cr>
 
 au BufNewFile,BufRead *.py,*.java,*.cpp,*.c,*.cs,*.rkt,*.h,*.html
     \ set tabstop=4 |
@@ -106,7 +103,7 @@ set laststatus=2
 " set showtabline=2
 
 " true colours
-set background=dark
+set background=light
 set t_Co=256
 
 if (has("nvim"))
@@ -151,15 +148,8 @@ nnoremap <leader>sv :source $MYVIMRC<cr>
 " enable or disable line wrapping in current buffer
 nnoremap <buffer> <localleader>w :set wrap!<cr>
 
-" c++17 support in syntastic
-let g:syntastic_cpp_compiler = 'clang++'
-let g:syntastic_cpp_compiler_options = ' -std=c++17'
 
-
-
-
-
-"<===========================================================================================================================================>
+"<===============================execution of a c++ code===================================================================>
 
 " run code
 " for detecting OS
@@ -198,6 +188,7 @@ endfunction
 
 command! -nargs=0 CompileAndRun call TermWrapper(printf('g++ -std=c++17 %s && a.exe', expand('%')))
 command! -nargs=1 CompileAndRunWithFile call TermWrapper(printf('g++ -std=c++17 %s && a.exe < %s', expand('%'), <args>))
+
 autocmd FileType cpp nnoremap <F9> :CompileAndRunWithFile "input.txt"<CR>
 
 autocmd FileType cpp nnoremap <F10> :CompileAndRun<CR>
@@ -232,7 +223,7 @@ augroup END
 " options
 " choose between 'vertical' and 'horizontal' for how the terminal window is split
 " (default is vertical)
-let g:split_term_style = 'horizontal'
+let g:split_term_style = 'vertical'
 
 " add a custom command to resize the terminal window to your preference
 " (default is to split the screen equally)
