@@ -1,4 +1,4 @@
-cd C:\CP Vim "the location where your programs are stored
+cd C:\CP  "the location where your programs are stored
 
 set laststatus=2
 set noshowmode
@@ -18,15 +18,17 @@ call vundle#begin()
 " <============================================>
 Plugin 'VundleVim/Vundle.vim'
 
-Plugin 'jiangmiao/auto-pairs'
-
-Plugin 'preservim/nerdtree'
-
-Plugin 'ycm-core/YouCompleteMe'
 
 Plugin 'drmikehenry/vim-fontsize'
 
-Plugin 'nanotech/jellybeans.vim'
+Plugin '907th/vim-auto-save'
+
+Plugin 'Raimondi/delimitMate'
+
+Plugin 'tpope/vim-surround'
+
+Plugin 'ervandew/supertab'
+
 
 
 " <============================================>
@@ -35,18 +37,6 @@ Plugin 'nanotech/jellybeans.vim'
 call vundle#end()            " required
 filetype plugin indent on    " required
 
-"<=============jellybeans=============>
-colorscheme jellybeans
-let g:jellybeans_use_lowcolor_black = 1
-"<=============YCM==================>
-let g:ycm_show_diagnostics_ui = 0
-
-
-"<==================nerdtree==========================>
-nnoremap <leader>n :NERDTreeFocus<CR>
-nnoremap <C-n> :NERDTree<CR>
-nnoremap <C-t> :NERDTreeToggle<CR>
-nnoremap <C-f> :NERDTreeFind<CR>
 
 
 "<========================moves current line up or down ==============================>
