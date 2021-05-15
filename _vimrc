@@ -92,8 +92,6 @@ inoremap {} {}
 autocmd filetype cpp nnoremap <f5> :w <bar> !g++ -std=c++17 -O2 -Wall % -o %:r && %:r.exe <cr>
 autocmd filetype cpp nnoremap <F9> :w <bar> !g++ -std=c++17 % -o %:r -Wl,--stack,268435456<CR>
 autocmd filetype cpp nnoremap <F10> :!%:r<CR>
-autocmd Filetype python nnoremap <buffer> <F6> :w<CR>:vert ter python3 "%"<CR>
-autocmd filetype c nnoremap <f5> :w <bar> !make %:r && ./%:r <cr>
 "<==============================do not touch this part===============================================>
 set nu
 augroup numbertoggle
