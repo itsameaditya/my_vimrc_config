@@ -32,7 +32,7 @@ inoremap <S-Down> <Esc>:m+<CR>
 
 
 au GUIEnter * simalt ~x
-set hls
+set hls 
 set is
 set cb=unnamed
 set gfn=Fixedsys:h10
