@@ -25,8 +25,6 @@ Plugin '907th/vim-auto-save'
 
 Plugin 'Raimondi/delimitMate'
 
-Plugin 'tpope/vim-surround'
-
 Plugin 'ervandew/supertab'
 
 
