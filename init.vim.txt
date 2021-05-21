@@ -1,6 +1,6 @@
 set nocompatible              " be iMproved, required
 filetype off                  " required
-
+set autoread
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
@@ -9,18 +9,31 @@ Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'preservim/nerdcommenter'
 Plugin 'rafi/awesome-vim-colorschemes'
+Plugin 'altercation/vim-colors-solarized'
 " <<<<<<<<<<<<<<<<<<<<<<<<===============================important=============>>>
 Plugin '907th/vim-auto-save'
 Plugin 'Raimondi/delimitMate'
-Plugin 'tpope/vim-surround'
 Plugin 'ervandew/supertab'
 Plugin 'dense-analysis/ale'
+Plugin 'preservim/nerdtree'
+Plugin 'djoshea/vim-autoread'
+
 call vundle#end()   
 filetype plugin on
 
 let mapleader = "\<Space>"
 "<<<====================This is where the programs are stored =======================>
-cd C:\CP 
+cd C:\Users\Aditya\CP 
+
+nnoremap <leader>n :NERDTreeFocus<CR>
+nnoremap <C-n> :NERDTree<CR>
+nnoremap <C-t> :NERDTreeToggle<CR>
+nnoremap <C-f> :NERDTreeFind<CR>
+" Exit Vim if NERDTree is the only window left.
+autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() |
+    \ quit | endif
+
+
 
 "autosave
 let g:auto_save_events = ["InsertLeave", "TextChanged"]
@@ -31,7 +44,7 @@ nnoremap <S-Down> :m+<CR>
 inoremap <S-Up> <Esc>:m-2<CR>
 inoremap <S-Down> <Esc>:m+<CR>
 "<<<<<<<<=======template for competitive coding ========================>
-nnoremap <leader>cc= :0r C:/CP/template.cpp<CR> 
+nnoremap <leader>cc= :0r C:/Users/Aditya/template.cpp<CR> 
 imap jj <Esc>
 inoremap { {}<Left>
 inoremap {<CR> {<CR>}<Esc>O
@@ -62,7 +75,7 @@ syntax on
 
 " air-line
 let g:airline_powerline_fonts = 1
-let g:airline_theme = 'jellybeans'
+let g:airline_theme = 'solarized'
 let g:airline#extensions#tabline#enabled = 1
 
 if !exists('g:airline_symbols')
@@ -100,7 +113,7 @@ set laststatus=2
 " set showtabline=2
 
 " true colours
-set background=dark
+set background=light
 set t_Co=256
 
 if (has("nvim"))
@@ -111,7 +124,8 @@ if (has("termguicolors"))
   set termguicolors
 endif
 
-colorscheme jellybeans 
+
+colorscheme solarized8_high 
 
 set nu rnu " relative line numbering
 set clipboard=unnamed " public copy/paste register
@@ -141,6 +155,7 @@ nnoremap <leader>ev :vsplit $MYVIMRC<cr>
 nnoremap <leader>sv :source $MYVIMRC<cr>
 " enable or disable line wrapping in current buffer
 nnoremap <buffer> <localleader>w :set wrap!<cr>
+
 "<===============================execution of a c++ code===================================================================>
 
 " run code
