@@ -1,6 +1,8 @@
 set nocompatible              " be iMproved, required
 filetype off                  " required
+
 set autoread
+
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
@@ -8,8 +10,8 @@ call vundle#begin()
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'preservim/nerdcommenter'
+Plugin 'ghifarit53/tokyonight-vim'
 Plugin 'rafi/awesome-vim-colorschemes'
-Plugin 'altercation/vim-colors-solarized'
 " <<<<<<<<<<<<<<<<<<<<<<<<===============================important=============>>>
 Plugin '907th/vim-auto-save'
 Plugin 'Raimondi/delimitMate'
@@ -19,12 +21,14 @@ Plugin 'preservim/nerdtree'
 Plugin 'djoshea/vim-autoread'
 
 call vundle#end()   
+
 filetype plugin on
 
 let mapleader = "\<Space>"
 "<<<====================This is where the programs are stored =======================>
 cd C:\Users\Aditya\CP 
 
+" <<<<<<<<======================================NERDTREE==============================>>
 nnoremap <leader>n :NERDTreeFocus<CR>
 nnoremap <C-n> :NERDTree<CR>
 nnoremap <C-t> :NERDTreeToggle<CR>
@@ -34,17 +38,19 @@ autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTr
     \ quit | endif
 
 
-
 "autosave
 let g:auto_save_events = ["InsertLeave", "TextChanged"]
 let g:auto_save = 1 
+
 "<========================moves current line up or down ==============================>
 nnoremap <S-Up> :m-2<CR>
 nnoremap <S-Down> :m+<CR>
 inoremap <S-Up> <Esc>:m-2<CR>
 inoremap <S-Down> <Esc>:m+<CR>
+
 "<<<<<<<<=======template for competitive coding ========================>
 nnoremap <leader>cc= :0r C:/Users/Aditya/template.cpp<CR> 
+
 imap jj <Esc>
 inoremap { {}<Left>
 inoremap {<CR> {<CR>}<Esc>O
@@ -75,7 +81,7 @@ syntax on
 
 " air-line
 let g:airline_powerline_fonts = 1
-let g:airline_theme = 'solarized'
+let g:airline_theme = 'jellybeans'
 let g:airline#extensions#tabline#enabled = 1
 
 if !exists('g:airline_symbols')
@@ -111,21 +117,20 @@ highlight Comment cterm=italic gui=italic
 
 set laststatus=2
 " set showtabline=2
-
-" true colours
+"
+syntax enable
 set background=light
-set t_Co=256
 
 if (has("nvim"))
-  let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+ let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 endif
 
 if (has("termguicolors"))
-  set termguicolors
+ set termguicolors
 endif
 
 
-colorscheme solarized8_high 
+colorscheme jellybeans
 
 set nu rnu " relative line numbering
 set clipboard=unnamed " public copy/paste register
@@ -151,6 +156,8 @@ set hlsearch "highlights matching searches
 nnoremap // :noh<return>
 " open vimrc in vertical split
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
+"open input.txt in vertical split
+nnoremap <leader>qq :vsplit input.txt<cr>
 " update changes into current buffer
 nnoremap <leader>sv :source $MYVIMRC<cr>
 " enable or disable line wrapping in current buffer
