@@ -1,7 +1,9 @@
 set nocompatible              " be iMproved, required
+
 filetype off                  " required
 
 set autoread
+set scrolloff=10
 
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
@@ -10,14 +12,12 @@ call vundle#begin()
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'preservim/nerdcommenter'
-Plugin 'ghifarit53/tokyonight-vim'
 Plugin 'rafi/awesome-vim-colorschemes'
 " <<<<<<<<<<<<<<<<<<<<<<<<===============================important=============>>>
 Plugin '907th/vim-auto-save'
 Plugin 'Raimondi/delimitMate'
 Plugin 'ervandew/supertab'
-Plugin 'dense-analysis/ale'
-Plugin 'preservim/nerdtree'
+"Plugin 'dense-analysis/ale'
 Plugin 'djoshea/vim-autoread'
 
 call vundle#end()   
@@ -25,6 +25,7 @@ call vundle#end()
 filetype plugin on
 
 let mapleader = "\<Space>"
+
 "<<<====================This is where the programs are stored =======================>
 cd C:\Users\Aditya\CP 
 
@@ -36,7 +37,7 @@ nnoremap <C-f> :NERDTreeFind<CR>
 " Exit Vim if NERDTree is the only window left.
 autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() |
     \ quit | endif
-
+"=======================================================================================>>
 
 "autosave
 let g:auto_save_events = ["InsertLeave", "TextChanged"]
@@ -121,16 +122,17 @@ set laststatus=2
 syntax enable
 set background=light
 
-if (has("nvim"))
- let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-endif
 
-if (has("termguicolors"))
- set termguicolors
-endif
+"if (has("nvim"))
+ "let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+"endif
+
+"if (has("termguicolors"))
+ "set termguicolors
+"endif
 
 
-colorscheme jellybeans
+"colorscheme jellybeans 
 
 set nu rnu " relative line numbering
 set clipboard=unnamed " public copy/paste register
