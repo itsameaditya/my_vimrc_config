@@ -1,4 +1,4 @@
-cd C:\CP  "the location where your programs are stored
+cd C:\Users\Aditya\CP "the location where your programs are stored
 
 set laststatus=2
 set noshowmode
@@ -15,19 +15,17 @@ nnoremap <esc> :noh<return><esc>
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
-" <============================================>
-Plugin 'VundleVim/Vundle.vim'
-
-
-Plugin 'drmikehenry/vim-fontsize'
-
+"<<<<<<Aesthetics =====================>>>>>>>>>>
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+Plugin 'preservim/nerdcommenter'
+Plugin 'rafi/awesome-vim-colorschemes'
+" <<<<<<<<<<<<<<<<<<<<<<<<===============================important=============>>>
 Plugin '907th/vim-auto-save'
-
 Plugin 'Raimondi/delimitMate'
-
 Plugin 'ervandew/supertab'
-
-
+Plugin 'dense-analysis/ale'
+Plugin 'djoshea/vim-autoread'
 
 " <============================================>
 
@@ -35,6 +33,9 @@ Plugin 'ervandew/supertab'
 call vundle#end()            " required
 filetype plugin indent on    " required
 
+"autosave
+let g:auto_save_events = ["InsertLeave", "TextChanged"]
+let g:auto_save = 1 
 
 
 "<========================moves current line up or down ==============================>
@@ -56,6 +57,18 @@ set nocompatible
 filetype off                 
 
 source $VIMRUNTIME/vimrc_example.vim
+nnoremap <leader>cc= :0r C:/Users/Aditya/template.cpp<CR> 
+
+
+" <<<<<<<<======================================NERDTREE==============================>>
+nnoremap <leader>n :NERDTreeFocus<CR>
+nnoremap <C-n> :NERDTree<CR>
+nnoremap <C-t> :NERDTreeToggle<CR>
+nnoremap <C-f> :NERDTreeFind<CR>
+" Exit Vim if NERDTree is the only window left.
+autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() |
+    \ quit | endif
+
 
 "<====================remapping basic configs ==============================================>
 set clipboard=unnamed
@@ -66,17 +79,18 @@ set ts=4
 set sw=4
 set si
 set noswapfile
+set gfn=Fixedsys:h14
 
-
-if has("gui_running")
-  if has("gui_gtk2")
-    set guifont=Inconsolata\ 12
-  elseif has("gui_macvim")
-    set guifont=Menlo\ Regular:h14
-  elseif has("gui_win32")
-    set guifont=Consolas:h11:cANSI
-  endif
-endif
+" <<<<<<<<==== font==========>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+"if has("gui_running")
+"  if has("gui_gtk2")
+"    set guifont=Inconsolata\ 12
+"  elseif has("gui_macvim")
+"    set guifont=Menlo\ Regular:h14
+"  elseif has("gui_win32")
+"    set guifont=Consolas:h11:cANSI
+ " endif
+"endif
 
 
 nnoremap <esc> :noh<return><esc>
