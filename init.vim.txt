@@ -1,12 +1,14 @@
+
 set nocompatible              " be iMproved, required
 
 filetype off                  " required
 
 set autoread
-set scrolloff=10
+set scrolloff=6
 
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
+
 
 "<<<<<<Aesthetics =====================>>>>>>>>>>
 Plugin 'vim-airline/vim-airline'
@@ -15,9 +17,8 @@ Plugin 'preservim/nerdcommenter'
 Plugin 'rafi/awesome-vim-colorschemes'
 " <<<<<<<<<<<<<<<<<<<<<<<<===============================important=============>>>
 Plugin '907th/vim-auto-save'
-Plugin 'Raimondi/delimitMate'
+Plugin 'jiangmiao/auto-pairs'
 Plugin 'ervandew/supertab'
-"Plugin 'dense-analysis/ale'
 Plugin 'djoshea/vim-autoread'
 
 call vundle#end()   
@@ -53,10 +54,6 @@ inoremap <S-Down> <Esc>:m+<CR>
 nnoremap <leader>cc= :0r C:/Users/Aditya/template.cpp<CR> 
 
 imap jj <Esc>
-inoremap { {}<Left>
-inoremap {<CR> {<CR>}<Esc>O
-inoremap {{ {
-inoremap {} {}
 
 set splitbelow
 set splitright
@@ -121,6 +118,7 @@ set laststatus=2
 "
 syntax enable
 set background=light
+colorscheme solarized8_high
 
 
 "if (has("nvim"))
@@ -132,8 +130,6 @@ set background=light
 "endif
 
 
-"colorscheme jellybeans 
-
 set nu rnu " relative line numbering
 set clipboard=unnamed " public copy/paste register
 set ruler
@@ -141,7 +137,7 @@ set showcmd
 set noswapfile " doesn't create swap files
 set noshowmode
 set shortmess+=c
-set omnifunc=syntaxcomplete#Complete
+
 
 set backspace=indent,eol,start " let backspace delete over lines
 set autoindent " enable auto indentation of lines
