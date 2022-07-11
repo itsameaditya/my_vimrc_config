@@ -19,9 +19,14 @@ Plugin 'ervandew/supertab'
 " <============================================>
 
 
+let mapleader = "\<Space>"
 call vundle#end()            " required
 filetype plugin indent on    " required
 
+
+"autosave
+let g:auto_save_events = ["InsertLeave", "TextChanged"]
+let g:auto_save = 1 
 
 
 "<========================moves current line up or down ==============================>
@@ -35,11 +40,14 @@ au GUIEnter * simalt ~x
 set hls 
 set is
 set cb=unnamed
-set gfn=Fixedsys:h10
+set gfn=Consolas:h12
 set ts=4
 set sw=4
 set si
 cd C:\Users\Aditya\CP
+
+"<<<<<<<<=======template for competitive coding ========================>
+nnoremap <leader>cc= :0r C:/Users/Aditya/template.cpp<CR> 
 
 imap jj <ESC>
 inoremap { {}<Left>
@@ -48,7 +56,7 @@ inoremap {{ {
 inoremap {} {}
 
 autocmd filetype cpp nnoremap <F5> :w <bar> !g++ -std=c++17 -O2 -Wall % -o %:r && %:r.exe <cr>
-autocmd filetype cpp nnoremap <F9> :w <bar> !g++ -std=c++14 % -o %:r -Wl,--stack,268435456<CR>
+autocmd filetype cpp nnoremap <F9> :w <bar> !g++ -std=c++17 % -o %:r -Wl,--stack,268435456<CR>
 autocmd filetype cpp nnoremap <F10> :!%:r<CR>
 autocmd filetype cpp nnoremap <C-C> :s/^\(\s*\)/\1\/\/<CR> :s/^\(\s*\)\/\/\/\//\1<CR> $
 
